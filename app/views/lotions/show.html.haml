@@ -1,0 +1,35 @@
+- model_class = Lotion
+.page-header
+  %h1
+    ="#{@lotion.name} (Lotion)"
+  %img{ src: "#{@lotion.image_url}", style: "width: 100%; max-width: 140px;" }
+.fieldset
+  %dl
+    %dt.label.label-default= model_class.human_attribute_name(:name)
+    %dd
+      %pre.prettyprint= @lotion.name
+  %dl
+    %dt.label.label-default= model_class.human_attribute_name(:image_url)
+    %dd
+      %pre.prettyprint= @lotion.image_url
+  %h3 Available at these hotels
+  %dl
+    - @lotion.hotels.each do |hotel|
+      %dd
+        %pre.prettyprint
+          %a{href: hotel_path(hotel)}
+            %img{ src: "#{hotel.logo_url}", style: "width: 100%; max-width: 75px;" }
+            = hotel.name
+
+.form-group
+  = link_to t('.back', :default => t("helpers.links.back")), |
+    lotions_path, :class => 'btn btn-success'                  |
+  - if user_signed_in? && (current_user == @lotion.created_by || current_user.superuser?)
+    = link_to t('.edit', :default => t("helpers.links.edit")), |
+      edit_lotion_path(@lotion), :class => 'btn btn-primary'       |
+    -#
+    = link_to t('.destroy', :default => t("helpers.links.destroy")),                                               |
+      lotion_path(@lotion),                                                                                            |
+      :method => 'delete',                                                                                         |
+      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, |
+      :class => 'btn btn-danger'                                                                                   |

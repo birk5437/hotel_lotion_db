@@ -1,0 +1,8 @@
+- if @lotion.errors.present?
+  = @lotion.errors.full_messages.join("<br />").html_safe
+= semantic_form_for @lotion do |f|
+  = f.inputs do
+    = f.input :name
+    = f.input :image_url
+    = f.input :hotels, :as => :check_boxes
+    = f.submit
