@@ -70,6 +70,8 @@ gem 'underscore-rails'
 gem 'iconv'
 gem 'google-search'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'cloudinary', '~> 1.1', '>= 1.1.2'
+gem 'attachinary'
 
 # http://railscasts.com/episodes/258-token-fields?view=asciicast
 gem 'jquery-tokeninput-rails'

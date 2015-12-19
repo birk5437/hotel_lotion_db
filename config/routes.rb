@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mount Attachinary::Engine => "/attachinary"
+
   # resources :items
   resources :hotels do
     #->Prelang (voting/acts_as_votable)

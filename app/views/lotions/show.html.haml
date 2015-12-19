@@ -1,8 +1,10 @@
 - model_class = Lotion
 .page-header
   %h1
-    ="#{@lotion.name} (Lotion)"
-  %img{ src: "#{@lotion.image_url}", style: "width: 100%; max-width: 140px;" }
+    ="#{@lotion.name}"
+  - @lotion.photos.each do |photo|
+    = cl_image_tag(photo.path, { size: '125x125', crop: :fit })
+  -#%img{ src: "#{@lotion.image_url}", style: "width: 100%; max-width: 140px;" }
 .fieldset
   %dl
     %dt.label.label-default= model_class.human_attribute_name(:name)
