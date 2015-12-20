@@ -5,23 +5,8 @@
   - @lotion.photos.each do |photo|
     = cl_image_tag(photo.path, { size: '125x125', crop: :fit })
   -#%img{ src: "#{@lotion.image_url}", style: "width: 100%; max-width: 140px;" }
-.fieldset
-  %dl
-    %dt.label.label-default= model_class.human_attribute_name(:name)
-    %dd
-      %pre.prettyprint= @lotion.name
-  %dl
-    %dt.label.label-default= model_class.human_attribute_name(:image_url)
-    %dd
-      %pre.prettyprint= @lotion.image_url
   %h3 Available at these hotels
-  %dl
-    - @lotion.hotels.each do |hotel|
-      %dd
-        %pre.prettyprint
-          %a{href: hotel_path(hotel)}
-            %img{ src: "#{hotel.logo_url}", style: "width: 100%; max-width: 75px;" }
-            = hotel.name
+= render partial: "hotels/list", :locals => {:hotels => @lotion.hotels}
 
 .form-group
   = link_to t('.back', :default => t("helpers.links.back")), |
