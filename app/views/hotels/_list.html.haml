@@ -10,7 +10,8 @@
         = link_to(truncated_name, hotel_url(hotel))
       .picture
         %a.image{:href => hotel_url(hotel), :title => "Title"}
-          %img{:alt => "", :src => hotel.logo_url}/
+          =#%img{:alt => "", :src => hotel.logo_url}/
+          = cl_image_tag(hotel.logo.try(:path), { size: '270x200', crop: :fit })
         .hotel-content
           .description
             %p=""
