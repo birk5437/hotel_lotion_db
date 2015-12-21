@@ -4,7 +4,7 @@ development:
   api_key: '569893358658464'
   api_secret: oVeTe5YYWv3dWVaFwmI-T0-8ciA
   enhance_image_tag: true
-  static_image_support: false
+  static_image_support: true
 production:
   cloud_name: hotellotiondb
   api_key: '569893358658464'
