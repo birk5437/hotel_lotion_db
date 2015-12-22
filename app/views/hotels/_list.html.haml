@@ -1,41 +1,31 @@
 -# http://www.responsivewebmobile.com/posts/view/2013/06/04/5/Responsive_Pin_Page_templates_free
 
 - model_class = Hotel
+- item_width = local_assigns[:item_width] || 270
 
 #hotels
   - hotels.each do |hotel|
-    .masonry-item.masonry-brick
-      %h5.text-center
-        - truncated_name = truncate(hotel.name, length: 40, omission: "", separator: " ")
-        = link_to(truncated_name, hotel_url(hotel))
+    .masonry-item.masonry-brick{ style: "width: #{item_width}px;" }
+      - if local_assigns[:show_name]
+        %h5.text-center
+          - truncated_name = truncate(hotel.name, length: 40, omission: "", separator: " ")
+          = link_to(truncated_name, hotel_url(hotel))
       .picture
         %a.image{:href => hotel_url(hotel), :title => "Title"}
           =#%img{:alt => "", :src => hotel.logo_url}/
-          = cl_image_tag(hotel.logo.try(:path), { size: '270x200', crop: :fit })
-        .hotel-content
-          .description
-            %p=""
+          = cl_image_tag(hotel.logo.try(:path), { size: "#{item_width}x200", crop: :fit })
+
+        - if current_user.present? && (current_user.admin? || hotel.created_by == current_user || current_user.superuser?)
           .meta
-            %span.price
-              -#%i.icon-calendar
-              =# money_format(hotel.price)
             %span
-              -#%i.icon-user
-              -#%a.btn.btn-green-with-white{href: hotel.affiliate_url, style: "float: right;", target: "_blank"} View Lotions
-            -#%span
-            -#  %i.icon-heart-empty
-            -#  10
-          - if current_user.present? && (current_user.admin? || hotel.created_by == current_user || current_user.superuser?)
-            .meta
-              %span
-                - if current_user.admin?
-                  = link_to "Info", hotel_path(hotel)#, {:class => "btn btn-default"}
-                - if (hotel.created_by == current_user) || current_user.superuser?
-                  = link_to "Edit", edit_hotel_path(hotel)#, {:class => "btn btn-primary"}
-                  = link_to t('.destroy', :default => t("helpers.links.destroy")),
-                        hotel_path(hotel),
-                        :method => 'delete',
-                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
+              - if current_user.admin?
+                = link_to "Info", hotel_path(hotel)#, {:class => "btn btn-default"}
+              - if (hotel.created_by == current_user) || current_user.superuser?
+                = link_to "Edit", edit_hotel_path(hotel)#, {:class => "btn btn-primary"}
+                = link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      hotel_path(hotel),
+                      :method => 'delete',
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
 
 :javascript
   var $container = $('#hotels');

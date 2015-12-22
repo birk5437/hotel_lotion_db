@@ -2,7 +2,7 @@
 
 - model_class = Lotion
 
-= render partial: "list", :locals => {:lotions => @lotions}
+= render partial: "list", :locals => {:lotions => @lotions, :show_name => true, :show_hotels => true}
 
 :javascript
   var $container = $('#lotions');
