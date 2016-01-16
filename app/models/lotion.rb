@@ -7,4 +7,6 @@ class Lotion < ActiveRecord::Base
   validates :photos, presence: true
 
   belongs_to :created_by, :class_name => "User"
+
+  ratyrate_rateable 'bottle_design', 'overall'
 end

@@ -6,6 +6,8 @@
     = f.input :description
     = f.attachinary_file_field :photos
     = f.input :hotels, :as => :check_boxes
+    %h3 Rating
+    = rating_for @lotion, "overall", enable_half: true
     = f.submit
 :javascript
   $(document).ready(function(){
