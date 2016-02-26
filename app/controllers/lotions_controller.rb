@@ -103,6 +103,6 @@ class LotionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lotion_params
-      params.require(:lotion).permit(:name, :description, :image_url, :hotel_ids => [], :photos => [])
+      params.require(:lotion).permit(:name, :description, :category, :image_url, :hotel_ids => [], :photos => [])
     end
 end
