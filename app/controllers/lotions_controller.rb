@@ -6,7 +6,7 @@ class LotionsController < ApplicationController
   # GET /lotions.json
   def index
     # TODO: replace sort_order with acts_as_votable
-    @lotions = Lotion.all
+    @lotions = Lotion.all.order("created_at desc")
 
     respond_to do |format|
       format.html
