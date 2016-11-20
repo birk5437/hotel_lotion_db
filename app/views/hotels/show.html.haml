@@ -2,8 +2,7 @@
 .page-header
   %h1
     Hotel Info
-  -#%img{ src: "#{@hotel.logo_url}", style: "width: 100%; max-width: 140px;" }
-  = cl_image_tag(@hotel.logo.try(:path), { size: '270x200', crop: :fit })
+  = image_tag @hotel.logo.url(:medium)
 
   %h3 Lotions at this Hotel
   = render partial: "lotions/list", :locals => {:lotions => @hotel.lotions}

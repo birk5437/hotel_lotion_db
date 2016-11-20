@@ -2,9 +2,8 @@
 .page-header
   %h1
     ="#{@lotion.name}"
-  - @lotion.photos.each do |photo|
-    = cl_image_tag(photo.path, { size: '525x525', crop: :fit })
-  -#%img{ src: "#{@lotion.image_url}", style: "width: 100%; max-width: 140px;" }
+  = image_tag @lotion.image1.url(:medium) if @lotion.image1.present?
+  = image_tag @lotion.image2.url(:medium) if @lotion.image2.present?
   %h4= @lotion.description
   %h3 Available at these hotels
 = render partial: "hotels/list", :locals => {:hotels => @lotion.hotels, :item_width => 135}

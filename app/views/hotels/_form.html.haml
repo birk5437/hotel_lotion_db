@@ -7,8 +7,9 @@
       = f.text_field :name, :class => 'text-field form-control', autocomplete: "off"
   .form-group
     = f.label :logo, :class => 'control-label col-md-2'
+    = image_tag @hotel.logo.url(:tiny), class: "image" if @hotel.logo.present?
     .col-md-10
-      = f.attachinary_file_field :logo
+      = f.file_field :logo
       =# f.text_field :logo_url, :class => 'text-field form-control', autocomplete: "off"
   .form-group
     .col-md-offset-2.col-md-10
