@@ -4,6 +4,7 @@ class ConvertLotionImages < ActiveRecord::Migration
     lotion_count = Lotion.count
     Lotion.all.each_with_index do |lotion, i|
       puts "#{i + 1} of #{lotion_count}"
+      puts lotion_path_prefix + lotion.photos.first.path
       if lotion.photos.length == 1
         lotion.image1 = open(lotion_path_prefix + lotion.photos.first.path)
         lotion.save!
