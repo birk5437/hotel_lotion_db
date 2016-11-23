@@ -12,8 +12,7 @@
           = link_to(truncated_name, hotel_url(hotel))
       .picture
         %a.image{:href => hotel_url(hotel), :title => "Title"}
-          =#%img{:alt => "", :src => hotel.logo_url}/
-          = cl_image_tag(hotel.logo.try(:path), { size: "#{item_width}x200", crop: :fit })
+          = image_tag hotel.logo.url(:medium)
 
         - if !local_assigns[:hide_crud] && (current_user.present? && (current_user.admin? || hotel.created_by == current_user || current_user.superuser?))
           .meta

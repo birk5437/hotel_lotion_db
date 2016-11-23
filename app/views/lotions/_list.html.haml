@@ -12,7 +12,7 @@
           = link_to(truncated_name, lotion_url(lotion))
       .picture
         %a.image{:href => lotion_url(lotion), :title => "Title"}
-          = cl_image_tag(lotion.photos.first.try(:path), { size: '500x500', crop: :fit })
+          = image_tag lotion.image1.url(:medium)
           -#%img{:alt => "", :src => lotion.image_url}/
       = rating_for lotion, "overall", enable_half: true, :half_show => true
       - if local_assigns[:show_description]
