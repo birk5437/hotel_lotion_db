@@ -25,14 +25,6 @@ GIT
     acts_as_votable (0.10.0)
 
 GIT
-  remote: git://github.com/twbs/bootstrap-sass.git
-  revision: d1dd1fb8b1c2ab3c4175adcda386cd973866f04d
-  specs:
-    bootstrap-sass (3.3.3)
-      autoprefixer-rails (>= 5.0.0.1)
-      sass (>= 3.2.19)
-
-GIT
   remote: git://github.com/wazery/ratyrate.git
   revision: 61487c4726c06748218fe082f85e5a253b69e225
   branch: master
@@ -95,6 +87,9 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.3)
+      autoprefixer-rails (>= 5.0.0.1)
+      sass (>= 3.2.19)
     bootstrap-sass-extras (0.0.6)
       rails (>= 3.1.0)
     builder (3.2.2)
@@ -277,7 +272,7 @@ DEPENDENCIES
   awesome_print
   better_errors
   binding_of_caller
-  bootstrap-sass!
+  bootstrap-sass
   bootstrap-sass-extras
   bundler
   chronic
