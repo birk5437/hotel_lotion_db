@@ -10,8 +10,10 @@ class Lotion < ActiveRecord::Base
   ratyrate_rateable 'bottle_design', 'overall'
 
   has_attached_file :image1, :styles => { :tiny => "100x100>", :small => "150x150>", :medium => "400x300>", :large => "800x600>"}
-  validates_attachment :image1, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+  # validates_attachment :image1, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+  validates_attachment_content_type :image1, :content_type => /image/
 
   has_attached_file :image2, :styles => { :tiny => "100x100>", :small => "150x150>", :medium => "400x300>", :large => "800x600>"}
-  validates_attachment :image2, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+  # validates_attachment :image2, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+  validates_attachment_content_type :image2, :content_type => /image/
 end
