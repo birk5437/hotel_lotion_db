@@ -5,6 +5,8 @@ class ConvertLotionImages < ActiveRecord::Migration
     Lotion.all.each_with_index do |lotion, i|
       begin
         puts "#{i + 1} of #{lotion_count}"
+        puts lotion.name
+        puts lotion.id
         puts lotion_path_prefix + lotion.photos.first.path
         if lotion.photos.length == 1
           lotion.image1 = open(lotion_path_prefix + lotion.photos.first.path)
@@ -14,8 +16,9 @@ class ConvertLotionImages < ActiveRecord::Migration
           lotion.image2 = open(lotion_path_prefix + lotion.photos.last.path)
           lotion.save!
         end
-      rescue StandardError
-        puts "error!"
+      rescue StandardError => e
+        puts "########### error! ###########"
+        puts e.to_s
       end
     end
   end
