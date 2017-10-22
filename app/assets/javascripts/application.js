@@ -23,5 +23,6 @@
 //= require attachinary
 //= require jquery.raty
 //= require ratyrate
+//= require chosen.jquery.min
 
 //= require_tree .
