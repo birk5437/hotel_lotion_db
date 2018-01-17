@@ -79,5 +79,3 @@ gem 'rails_12factor', group: :production
 
 # http://railscasts.com/episodes/258-token-fields?view=asciicast
 gem 'jquery-tokeninput-rails'
-
-gem 'will_paginate'
