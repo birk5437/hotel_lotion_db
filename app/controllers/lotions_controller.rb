@@ -6,10 +6,12 @@ class LotionsController < ApplicationController
   # GET /lotions.json
   def index
     # TODO: replace sort_order with acts_as_votable
-    @lotions = Lotion.all.order("created_at desc")
+    # @lotions = Lotion.all.order("created_at desc")
+    @lotions = Lotion.paginate(page: params[:page], per_page: 5).order('created_at DESC')
 
     respond_to do |format|
       format.html
+      format.js
       format.json { render json: @lotions }
     end
 

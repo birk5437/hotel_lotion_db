@@ -2,14 +2,24 @@
 
 - model_class = Lotion
 
-= render partial: "list", :locals => {:lotions => @lotions, :show_name => true, :show_hotels => true}
+%div#lotions{style: "opacity: 0;"}
+  = render @lotions
+
+%div#infinite-scrolling
+  = will_paginate @lotions
+
+-# = render partial: "list", :locals => {:lotions => @lotions, :show_name => true, :show_hotels => true}
 
 :javascript
   var $container = $('#lotions');
       $container.imagesLoaded(function(){
+      $container.animate({opacity: 1});
       $container.masonry({
         lotionSelector : '.lotion',
         columnWidth : 290,
         isAnimated: true
       });
+      if ($(document).height() <= $(window).height()) {
+        morePaginatedResults();
+      }
     });
